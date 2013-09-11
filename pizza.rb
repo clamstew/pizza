@@ -1,6 +1,6 @@
 module Pizza
   class Pie
-    attr_accessor :toppings
+    attr_accessor :toppings, :delivery_time
     # Instantiate a new topping.
     #
     # toppings - The Array of toppings - must be toppings objects
@@ -8,6 +8,7 @@ module Pizza
     # Returns a new Pie object.
     def initialize (toppings = [Pizza::Topping.new('cheese', vegetarian: true)])
       @toppings = toppings 
+      @delivery_time
     end
 
     def vegetarian?
@@ -17,6 +18,10 @@ module Pizza
 
     def add_topping topping
       @toppings << topping
+    end
+
+    def deliver! now=Time.now + (30*60)
+      @delivery_time = now
     end
   end
 
