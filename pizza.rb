@@ -1,6 +1,10 @@
 module Pizza
   class Pie
+    attr_accessor :toppings
 
+    def initialize toppings
+      @toppings = toppings 
+    end
   end
 
   class Topping

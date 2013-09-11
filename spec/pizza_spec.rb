@@ -6,7 +6,7 @@ require_relative '../pizza'
 describe Pizza::Pie do
   describe '.initialize' do
     it 'record all of the toppings' do
-      topping = [
+      toppings = [
         Pizza::Topping.new('mushrooms', vegetarian: true),
         Pizza::Topping.new('pepperoni')
       ]
