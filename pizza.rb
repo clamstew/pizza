@@ -5,7 +5,6 @@ module Pizza
     #
     # toppings - The Array of toppings - must be toppings objects
     #
-    #
     # Returns a new Pie object.
     def initialize (toppings = [Pizza::Topping.new('cheese', vegetarian: true)])
       @toppings = toppings 
@@ -13,6 +12,11 @@ module Pizza
 
     def vegetarian?
       @toppings.any? { |topping| topping.vegetarian == false } ? false : true
+      #!@toppings.any? { |topping| !topping.vegetarian } # another way to write - Matt Buck(tm)
+    end
+
+    def add_topping topping
+      @toppings << topping
     end
   end
 
