@@ -36,11 +36,19 @@ describe Pizza::Pie do
     end
   end
   describe '#add_topping' do
-    it 'adds a new topping to the toppings array' do
+    it 'adds a new topping object to the toppings array' do
       olive = Pizza::Topping.new('olive', vegetarian: true)
       pizza.add_topping(olive)
 
       expect(pizza.toppings.include?(olive)).to eq(true)
+    end
+  end
+  describe '#deliver!' do
+    it 'marks the @delivery_time attribute on the pizza for 30 min from now' do
+      delivery_time = Time.now + (30*60)
+      pizza.delivery_time == delivery_time
+
+      expect(pizza.delivery_time).to eq(delivery_time)
     end
   end
 end 
