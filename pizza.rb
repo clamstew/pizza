@@ -20,8 +20,12 @@ module Pizza
       @toppings << topping
     end
 
-    def deliver! now=Time.now + (30*60)
-      @delivery_time = now
+    def deliver! delivery_time=Time.now + (30*60)
+      @delivery_time = delivery_time
+    end
+
+    def late? now=Time.now
+      @delivery_time < now ? false : true
     end
   end
 

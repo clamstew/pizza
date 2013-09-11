@@ -45,25 +45,27 @@ describe Pizza::Pie do
   end
   describe '#deliver!' do
     it 'marks the @delivery_time attribute on the pizza for 30 min from now' do
-      now = Time.now + (30*60)
-      pizza.deliver!(now)
+      delivery_time = Time.now + (30*60)
+      pizza.deliver!(delivery_time)
 
-      expect(pizza.delivery_time).to eq(now)
+      expect(pizza.delivery_time).to eq(delivery_time)
     end
   end
   describe '#late?' do
     context 'if the pizza is late' do
       it 'returns true if the @delivery_time is greater than the current time' do 
-        now = Time.now + (30*60)
-        pizza.deliver!(now)
+        current_time = Time.now + (40*60)
+        delivery_time = Time.now + (30*60)
+        pizza.deliver!(delivery_time)
 
-        expect(pizza.late?).to eq(false)
+        expect(pizza.late?(current_time)).to eq(false)
       end
     end
     context 'if the pizza is on time' do
       it 'returns false if the @delivery_time is less than the current time' do
-        now = Time.now + (30*60)
-        pizza.deliver!(now)
+        # current_time = Time.now
+        delivery_time = Time.now + (30*60)
+        pizza.deliver!(delivery_time)
 
         expect(pizza.late?).to eq(true)
       end
